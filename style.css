@@ -1,0 +1,307 @@
+@charset "utf-8";
+
+/* 基本リセット */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+li { list-style: none; }
+
+body {
+    background-color: #0d2a4d;
+    color: #ffffff;
+    font-family: "メイリオ", sans-serif;
+}
+
+a { text-decoration: none; color: #ffffff; }
+
+/* 全体を囲むコンテナ（レスポンシブ対応） */
+#container {
+    width: 100%;           /* 幅を画面いっぱいにする */
+    max-width: 900px;      /* ただし最大900pxまで */
+    margin: 0 auto;        /* 中央寄せ */
+    position: relative;
+    padding: 0 10px;       /* スマホで端がくっつかないように */
+}
+
+/* --- ヘッダー --- */
+.header {
+    border-bottom: 2px solid #ffffff;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    
+}
+
+.header::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.logo {
+    float: left;
+}
+.logo h1 { font-size: 2rem; }
+.logo p { font-size: 0.8rem; color: #cccccc; }
+
+/* メニュー */
+ul.main-menu {
+    float: right;
+    margin-top: 10px;
+}
+
+ul.main-menu li {
+    float: left;
+    margin-left: 20px;
+    position: relative;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+ul.main-menu li a:hover { color: #ffcc00; }
+
+/* サブメニュー */
+ul.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    width: 160px;
+    background-color: #1a3b66;
+    z-index: 100;
+    
+}
+
+ul.sub-menu li {
+    float: none;
+    margin: 0;
+    border-bottom: 1px solid #2a5b88;
+}
+
+ul.sub-menu li a {
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+}
+
+ul.sub-menu li a:hover { background-color: #2a5b88; }
+
+/* --- スライダー（レスポンシブ対応版） --- */
+.slider-box {
+    width: 100%;
+
+    height: 0;
+    padding-bottom: 44.4%; /* 400 / 900 = 44.4% */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+    border: 2px solid #ffffff;
+    background-color: #000; /* 画像がない時に真っ黒にならないように */
+}
+
+.slider-wrapper {
+    width: 300%; /* 画像3枚分なので300% */
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.slide {
+    width: 33.333%; /* 3枚中1枚の幅 */
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 枠に合わせてトリミング */
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.2rem;
+    color: #ffcc00;
+    background: rgba(0,0,0,0.6);
+    padding: 10px 20px;
+    width: 100%;
+    text-align: right;
+}
+
+/* 矢印ボタン */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* 完全に上下中央にする */
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    z-index: 10;
+}
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+/* --- コンテンツエリア --- */
+.contents {
+    padding: 20px;
+    background-color: #1a3b66;
+    margin-bottom: 50px;
+}
+
+/* --- モーダル --- */
+#modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 900;
+}
+
+#modal-content {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%); /* 画面中央配置 */
+    width: 90%;
+    max-width: 800px;
+    background-color: #0d2a4d;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    z-index: 999;
+    /* スマホで縦積みするためにFlexbox使用 */
+    display: none; /* 初期非表示 */
+}
+/* 表示時のスタイルはJSで制御しますが、レイアウト用にクラス定義 */
+.modal-flex {
+    display: flex !important;
+    gap: 20px;
+    align-items: center; /* 上下中央揃え */
+}
+
+#modal-img {
+    max-width: 100%;       /* 横幅は枠いっぱいまで */
+    max-height: 300px;     /* 高さは最大300pxまで） */
+    width: auto;           /* 比率を崩さない */
+    height: auto;          /* 比率を崩さない */
+    object-fit: contain;   /* 全体が見えるように収める */
+    display: block;
+    margin: 0 auto;        /* 中央寄せ */
+    border: 2px solid #fff; /* 枠線をつけて見やすく */
+}
+
+.modal-left {
+    flex:1;
+    text-align: center; /* 画像を真ん中に配置 */
+    min-width: 0;
+
+}
+
+.modal-right {
+    flex: 1;
+    text-align: left;
+}
+
+
+.modal-left img { 
+    max-width: 100%; 
+    max-height:300px;
+    width:auto;
+    height: auto;
+    object-fit:contain;
+    display:inline-block;
+
+}
+.modal-right { flex: 1; text-align: left; }
+
+.play-btn {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000;
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* --- 作品一覧グリッドレイアウト --- */
+.works-grid {
+    overflow: hidden; /* float解除 */
+    margin-top: 20px;
+    width: 100%;
+    padding-bottom: 20px; /* 下に余白 */
+}
+
+/* 3D Works のセクション（下に滑り込むのを防ぐ） */
+#3Dworks {
+    clear: both;          /* ★重要：上のfloat要素の影響を強制リセット */
+    margin-top: 60px;     /* 上との隙間をしっかり空ける */
+    overflow: hidden;     /* 自身の崩れ防止 */
+    width: 100%;
+    border-top: 1px dashed #446688; /* 区切り線（お好みで） */
+    padding-top: 40px;
+}
+
+/* 念のため：各作品アイテムの並びを整える */
+.work-item:nth-child(odd) {
+    clear: left;          /* 奇数番目（左側）のズレ防止 */
+}
+
+
+.work-item {
+    float: left;
+    width: 48%;       /* 2列にするため、少し余裕を持って48% */
+    margin-right: 4%; /* 右側の隙間 */
+    margin-bottom: 40px; /* 下の隙間 */
+    background-color: #0f3057; /* 背景色（少し明るい紺色） */
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;   /* クリックできるマークにする */
+    transition: opacity 0.3s;
+}
+
+/* 2個ごとの右マージンを消す（レイアウト崩れ防止） */
+.work-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.work-item:hover {
+    opacity: 0.8;
+}
+
+.work-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+
+.work-img img {
+    
+    width: 100%;
+    height: auto;
+    border: 1px solid #ffffff;
+    display: block;
+}
+
+/* --- スマホ向けレイアウト（画面幅600px以下） --- */
+@media screen and (max-width: 600px) {
+    .header { text-align: center; }
+    .logo { float: none; display: inline-block; margin-bottom: 10px; }
+    ul.main-menu { float: none; display: flex; justify-content: center; padding: 0; }
+    ul.main-menu li { margin: 0 10px; font-size: 0.8rem; }
+    
+    .slider-box { padding-bottom: 70%; /* スマホでは少し縦長に */ }
+    .caption { font-size: 0.9rem; padding: 5px; }
+    
+    .modal-flex { flex-direction: column; } /* モーダルを縦積みに */
+
+    .work-item {
+        width: 100%;      /* スマホでは1列にする */
+        float: none;
+        margin-right: 0;
+    }
+}
