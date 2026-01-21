@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinnyama Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="jquery-1.6.min.js"></script>
+    <script src="script.js"></script>
+    
+</head>
+<body>
+
+<div id="container">
+    <div class="header">
+        <div class="logo">
+            <h1>仁山</h1>
+            <p>Jinnyama Portfolio</p>
+        </div>
+        
+        <ul class="main-menu">
+            <li><a href="#">PROFILE ▼</a>
+                <ul class="sub-menu">
+                    <li><a href="about.html">仁山について</a></li>
+                    <li><a href="skill.html">スキル</a></li>
+                    <li><a href="history.html">経歴</a></li>
+                </ul> 
+            </li>
+            <li><a href="#">WORKS ▼</a>
+                <ul class="sub-menu">
+                    <li><a href="#games">Game</a></li>
+                    <li><a href="#works-3d">Other Works</a></li>
+                </ul>
+            </li>
+            <li><a href="#">SNS ▼</a>
+                <ul class="sub-menu">
+                    <li><a href="https://x.com/Jinnyama_Create">X(Twitter)</a></li>
+                </ul>
+            </li>
+            <li><a href="#">CONTACT ▼</a>
+                <ul class="sub-menu">
+                    <li><a href="contact.html">各連絡先</a></li>
+                </ul>
+                
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="slider-box">
+        <div class="slider-wrapper">
+            <div class="slide" title="TOP ROAD" data-desc="敵を倒しながら頂上を目指す登山ゲーム、お助けアイテムを使って短時間クリアを目指そう！" data-url="https://unityroom.com/games/top_road">
+                <img src="images/work1.png" alt="Game A">
+                <div class="caption">TOP ROAD</div>
+            </div>
+            <div class="slide" title="ButtobaShoot!" data-desc="自由自在に動いたり隠れたりしている的を当てるシューティングゲームです！1分間でいくつ的を撃てるかな？。" data-url="https://unityroom.com/games/buttobashoot">
+                <img src="images/work2.png" alt="Game B">
+                <div class="caption">ButtobaShoot!</div>
+            </div>
+            <div class="slide" title="あいゾーン" data-desc="スライダーを動き回るハートがあり、1回目のクリックと2回目にクリックしたゾーンの間にハートが来た時にクリックをするゲームです。ゾーンが狭ければ狭いほど成功したときに高得点を得られます！" data-url="https://unityroom.com/games/ai-zone">
+                <img src="images/work3.png" alt="Game C">
+                <div class="caption">あいゾーン</div>
+            </div>
+
+        </div>
+        <a href="#" class="prev-btn">◀</a>
+        <a href="#" class="next-btn">▶</a>
+
+    </div>
+    <div id="games" class="contents">
+        <h2>Game Works</h2>
+        <div class="works-grid">
+
+            <div class="work-item" title="TOP ROAD" data-desc="敵を倒しながら頂上を目指す登山ゲーム、お助けアイテムを使って短時間クリアを目指そう！。" data-url="https://unityroom.com/games/top_road">
+                <div class="work-title">TOP ROAD</div>
+                <div class="work-img">
+                    <img src="images/work1.png" alt="Game A">
+                </div>
+            </div>
+        
+
+            <div class="work-item" title="ButtobaShoot!" data-desc="自由自在に動いたり隠れたりしている的を当てるシューティングゲームです！1分間でいくつ的を撃てるかな？" data-url="https://unityroom.com/games/buttobashoot">
+                <div class="work-title">ButtobaShoot!</div>
+                <div class="work-img">
+                    <img src="images/work2.png" alt="Game D">
+                </div>
+            </div>
+
+            <div class="work-item" title="あいゾーン" data-desc="スライダーを動き回るハートがあり、1回目のクリックと2回目にクリックしたゾーンの間にハートが来た時にクリックをするゲームです。ゾーンが狭ければ狭いほど成功したときに高得点を得られます！" data-url="https://unityroom.com/games/ai-zone">
+                <div class="work-title">あいゾーン</div>
+                <div class="work-img">
+                    <img src="images/work3.png" alt="Game D">
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div id="works-3d" class="contents">
+        <h2>Other Works</h2>
+        <div class="works-grid">
+
+            <div class="work-item" title="イニャー" data-desc="iniadのキャラクターのイニャーをblenderで作りました" data-url="#">
+                <div class="work-title">イニャー</div>
+                <div class="work-img">
+                    <img src="images/inya-.png" alt="Game A">
+                </div>
+            </div>
+
+            <div class="work-item" title="イニャー" data-desc="オリジナルクッキーのパッケージデザインです。" data-url="#">
+                <div class="work-title">クッキーパッケージ</div>
+                <div class="work-img">
+                    <img src="images/Coolie.png" alt="Game A">
+                </div>
+            </div>
+        
+
+
+        </div>
+        
+    </div>
+</div>
+
+
+<div id="modal-overlay"></div>
+<div id="modal-content">
+    <div class="modal-left">
+        <img id="modal-img" src="" alt="">
+    </div>
+    <div class="modal-right">
+        <h2 id="modal-title">タイトル</h2>
+        
+        <p id="modal-desc">説明文</p>
+        <a id="modal-link" href="#" target="_blank" class="play-btn">遊ぶ (UnityRoomへ)</a>
+        <p><a href="#" id="modal-close"></a></p>
+    </div>
+</div>
+
+    
+</body>
+</html>
